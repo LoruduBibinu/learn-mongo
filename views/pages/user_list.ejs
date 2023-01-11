@@ -1,0 +1,24 @@
+<section id="UserRoll">
+  <h1>Users</h1>
+  <a href="/add_user">New user</a>
+  <ul>
+    <% for (var i = 0; i < users.length; i++) { %>
+    <li>
+      <form action="/user_list" method="post">
+        <p>mail :<%= users[i].email %></p>
+        <p>Nom <%= users[i].family_name %></p>
+        <p>Prénom :<%= users[i].given_name %></p>
+        <input type="text" name="name" placeholder="given name" />
+        <button type="submit" name="update" value="true">Update</button>
+        <p>
+          ID :<a href="/users/<%= users[i].id %>"
+            ><p><%= users[i].user_id %></p></a
+          >
+        </p>
+        <input type="hidden" name="id" value="<%= users[i].user_id %>" />
+        <button type="submit" name="delete" value="true">Delete User</button>
+      </form>
+    </li>
+    <% } %>
+  </ul>
+</section>
